@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--  a instrução DOCTYPE deve ser sempre a primeira a aparecer 
+em uma página HTML e indica para o browser qual versão da linguagem está sendo usada.
+-->
+<html>
+<head>
+<!-- a tag title define o título da página, aquele que aparece na janela/aba do navegador -->
+<title>Document Calculadora</title>
+<!-- adicionei as 2 linhas abaixo -->
+<meta charset="UTF-8"/>      <!-- Incluida esta linha -->
+<link rel="stylesheet" href="css/arquivo.css">  <!-- Inclui a minha folha de estilos -->
+</head>
+
+<body>
+
+<!-- a tag meta, nesse caso, especifica qual conjunto de caracteres (character set ou charset)
+ será usado para renderizar o texto da página. O UTF-8 contém todos os 
+ caracteres dos padrões Unicode e ASCII.
+-->
+<h1>Simple Calculator</h1>               <!-- Cabeçalho 1 -->
+<!--  <center>Simple Calculator</center>               <!-- Cabeçalho 1 -->   
+<h4>Testes HTML - Manuel Robalinho</h4>  <!-- Cabeçalho 2 -->
+<!-- <h3>Simple Calculator</h3> -->
+<br/>  <!-- A tag BR é uma tag vazia -->
+
+<!-- <style> -->
+<!-- Desativei os estilos e inclui no head a folha de estilos 
+Dentro do style está codigo de outra tecnologia. Neste caso o # indica que é uma classe CSS
+Com este método style, aplicamos estilos apenas na página onde as regras CSS estão inseridas
+-->
+<!--
+#calc{width:300px;height:250px;}
+#btn{width:100%;height:40px;font-size:20px;}
+</style>
+-->
+<form Name="calc">
+  
+ <!-- Este elemento define um formulário. É um elemento de container 
+  , mas ele também suporta alguns atributos específicos para configurar
+  a forma como o formulário se comporta. Todos os seus atributos são opcionais.
+-->
+<table id="calc" border=5>  <!-- Definição de tabela com 6 colunas-->
+<tr> 
+<!-- 
+Como criar tabelas < table >, linhas < tr > e colunas < td > em HTML
+A única tag de uso obrigatório em tabelas é: <table> </table>
+Dentro das tags de abertura e fechamento table é que iremos definir nossas tabelas, 
+sendo até possível aninhar tabelas, através do aninhamento de tags.
+É dentro desta tag que iremos usar as tags tr e td para criar as linhas e colunas 
+de nossas tabelas. Essa tag, junto seus mais diversos atributos, será responsável por 
+diversas características de uma tabela em HTML , como:
+-definir se a tabela vai ter borda ou não
+-caso a tabela tenha borda, qual a espessura desta
+-cor de fundo
+-espaçamento entre células
+-que partes da tabela serão visíveis
+
+-->
+
+<!-- ## Ver o que é o evento  return event.charCode >= 48  -->
+	<td colspan=6><input id="btn" name="display" onkeypress="return event.charCode >= 48 && event.charCode <= 57" type="text"></td>
+	<td style="display:none"><input name="M" type="number"></td>
+</tr>
+<tr>
+<!-- Linha 1 da tabela -->
+	<td><input id="btn" type=button value="MC" OnClick="calc.M.value=''"></td>
+	<td><input id="btn" type=button value="0" OnClick="calc.display.value+='0'"></td>
+	<td><input id="btn" type=button value="1" OnClick="calc.display.value+='1'"></td>
+	<td><input id="btn" type=button value="2" OnClick="calc.display.value+='2'"></td>
+	<td><input id="btn" type=button value="+" OnClick="calc.display.value+='+'"></td>	
+	<td><input id="btn" type=button value="(" OnClick="calc.display.value+='('"></td>
+	
+</tr>
+<tr>
+<!-- Linha 2 da tabela -->
+	<td><input id="btn" type=button value="MS" OnClick="calc.M.value=calc.display.value"></td>
+	<td><input id="btn" type=button value="3" OnClick="calc.display.value+='3'"></td>
+	<td><input id="btn" type=button value="4" OnClick="calc.display.value+='4'"></td>
+	<td><input id="btn" type=button value="5" OnClick="calc.display.value+='5'"></td>
+	<td><input id="btn" type=button value="-" OnClick="calc.display.value+='-'"></td>
+	<td><input id="btn" type=button value=")" OnClick="calc.display.value+=')'"></td>
+</tr>
+<tr>
+<!-- Linha 3 da tabela -->
+	<td><input id="btn" type=button value="MR" OnClick="calc.display.value=calc.M.value"></td>
+	<td><input id="btn" type=button value="6" OnClick="calc.display.value+='6'"></td>
+	<td><input id="btn" type=button value="7" OnClick="calc.display.value+='7'"></td>
+	<td><input id="btn" type=button value="8" OnClick="calc.display.value+='8'"></td>
+	<td><input id="btn" type=button value="x" OnClick="calc.display.value+='*'"></td>
+	<td><input id="btn" type=button value="[" OnClick="calc.display.value+='['"></td>
+</tr>
+
+<tr>
+<!-- Linha 4 da tabela -->
+	<td><input id="btn" type=button value="M+" OnClick="calc.M.value=(Number(calc.M.value))+(Number(calc.display.value))"></td>
+	<td><input id="btn" type=button value="9"  OnClick="calc.display.value+='9'"></td>
+	<td><input id="btn" type=button value="±"  OnClick="calc.display.value=(calc.display.value==Math.abs(calc.display.value)?-(calc.display.value):Math.abs(calc.display.value))"></td>
+	<td><input id="btn" type=button value="]"  OnClick="calc.display.value+=']'"></td>
+	<td><input id="btn" type=button value="=" OnClick="calc.display.value=eval(calc.display.value)"></td>
+	<td><input id="btn" type=button value="]" OnClick="calc.display.value+=']'"></td>
+</tr>
+<tr>
+<!-- Linha 5 da tabela -->
+	<td><input id="btn" type=button value="1/x" OnClick="calc.display.value=1/calc.display.value"></td>
+	<td><input id="btn" type=button value="." OnClick="calc.display.value+='.'"></td>
+	<td><input id="btn" type=button value="x2" OnClick="calc.display.value=Math.pow(calc.display.value,2)"></td>
+	<td><input id="btn" type=button value="√" OnClick="calc.display.value=Math.sqrt(calc.display.value)"></td>
+	<td><input id="btn" type=button value="C" OnClick="calc.display.value=''"></td>
+	<td><input id="btn" type=button value=" " OnClick="calc.display.value+=' '"></td>
+	
+</tr>
+ 
+</table>
+</form>
+</body>
+</html>
